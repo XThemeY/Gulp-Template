@@ -46,7 +46,7 @@ const deployFTP = gulp.series(build, ftp);
 
 
 //Default task
-gulp.task('default', scss);
+gulp.task('default', html);
 
 // Экспорт сценариев
 export { svgIcons }

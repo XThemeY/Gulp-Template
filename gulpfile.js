@@ -6,12 +6,12 @@ import { path } from "./gulp/config/path.js";
 import { plugins } from "./gulp/config/plugins.js";
 
 global.app = {
-	isBuild: process.argv.includes('--build'),
-	isDev: !process.argv.includes('--build'),
-	path: path,
-	gulp: gulp,
-	plugins: plugins
-}
+  isBuild: process.argv.includes("--build"),
+  isDev: !process.argv.includes("--build"),
+  path: path,
+  gulp: gulp,
+  plugins: plugins,
+};
 
 //Tasks import
 import { copy } from "./gulp/tasks/copy.js";
@@ -28,11 +28,11 @@ import { ftp } from "./gulp/tasks/ftp.js";
 
 //Watchers
 function watcher() {
-	gulp.watch(path.watch.files, copy)
-	gulp.watch(path.watch.html, html)//gulp.series(html,ftp)
-	gulp.watch(path.watch.images, img)//gulp.series(img,ftp)
-	gulp.watch(path.watch.scss, scss)//gulp.series(scss,ftp)
-	gulp.watch(path.watch.js, js)//gulp.series(js,ftp)
+  gulp.watch(path.watch.files, copy);
+  gulp.watch(path.watch.html, html); //gulp.series(html,ftp)
+  gulp.watch(path.watch.images, img); //gulp.series(img,ftp)
+  gulp.watch(path.watch.scss, scss); //gulp.series(scss,ftp)
+  gulp.watch(path.watch.js, js); //gulp.series(js,ftp)
 }
 
 const fonts = gulp.series(fontsToWoff, fontsStyle);
@@ -44,13 +44,12 @@ const build = gulp.series(cleanBuild, mainTasks);
 const deployZIP = gulp.series(cleanBuild, mainTasks, zip);
 const deployFTP = gulp.series(build, ftp);
 
-
 //Default task
-gulp.task('default', html);
+gulp.task("default", js);
 
 // Экспорт сценариев
-export { svgIcons }
-export { dev }
-export { build }
-export { deployZIP }
-export { deployFTP }
+export { svgIcons };
+export { dev };
+export { build };
+export { deployZIP };
+export { deployFTP };

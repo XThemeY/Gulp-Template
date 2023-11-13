@@ -45,7 +45,7 @@ const deployZIP = gulp.series(cleanBuild, mainTasks, zip);
 const deployFTP = gulp.series(build, ftp);
 
 //Default task
-gulp.task("default", js);
+gulp.task("default", dev);
 
 // Экспорт сценариев
 export { svgIcons };

@@ -1,6 +1,5 @@
 import webpack from "webpack-stream";
 import sourcemaps from "gulp-sourcemaps";
-import babel from "gulp-babel";
 
 export const js = () => {
   return app.gulp
@@ -14,12 +13,32 @@ export const js = () => {
       )
     )
     .pipe(app.plugins.if(app.isDev, sourcemaps.init()))
-    .pipe(babel())
     .pipe(
       webpack({
         mode: app.isDev ? "development" : "production",
         output: {
           filename: "main.min.js",
+        },
+        module: {
+          rules: [
+            {
+              test: /\.m?js$/,
+              exclude: /node_modules/,
+              use: {
+                loader: "babel-loader",
+                options: {
+                  presets: [
+                    [
+                      "@babel/preset-env",
+                      {
+                        targets: "defaults",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
         },
       })
     )

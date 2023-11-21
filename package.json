@@ -64,5 +64,9 @@
 		"last 2 years",
 		"> 5%",
 		"not dead"
-	]
+	],
+	"dependencies": {
+		"inputmask": "^5.0.8",
+		"just-validate": "^4.3.0"
+	}
 }

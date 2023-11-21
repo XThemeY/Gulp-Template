@@ -5,10 +5,22 @@
   <body>
     @@include('html/header.html',{})
     <main>
-      <div class="container"></div>
+      <div class="container">
+        <form action="submit"></form>
+      </div>
     </main>
     @@include('html/footer.html',{})
-
+    <form action="#" class="form">
+      <label class="form__label">
+        <input
+          type="text"
+          name="Имя"
+          class="input-reset form__input"
+          placeholder="Имя"
+        />
+      </label>
+      <button class="btn-reset form__btn">Отправить</button>
+    </form>
     <script src="js/main.min.js"></script>
   </body>
 </html>
